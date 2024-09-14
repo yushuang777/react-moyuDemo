@@ -1,0 +1,62 @@
+.wrap {
+  width: 350px;
+  height: 35px;
+  display: flex;
+}
+
+.node,
+.node-active {
+  border: 1px solid rgba(153, 153, 153, 0.5);
+  background-color: black;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-weight: bolder;
+  font-style: italic;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+@keyframes growShrink {
+  0% {
+    transform: scale(1) skew(0);
+  }
+  50% {
+    transform: scale(1.2) skew(-10deg);
+  }
+  100% {
+    transform: scale(1) skew(0);
+  }
+}
+
+.node-active {
+  background-color: rgb(245, 204, 24);
+  color: #000;
+  z-index: 1;
+  border-radius: 10px;
+  animation: growShrink 1s ease-in-out infinite;
+}
+
+.node-active > span {
+  display: inline-block;
+  transform: skew(10deg);
+}
+.node > span {
+  font-style: italic;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bolder;
+}
+
+.node:first-child,
+.node-active:first-child {
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+}
+
+.node:last-child,
+.node-active:last-child {
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
