@@ -1,5 +1,6 @@
 import { Button } from "antd";
 import React from "react";
+// import Worker from "./worker.js?worker";
 interface DataItem {
   id: number;
   value: number;
@@ -28,12 +29,13 @@ function WebWorker(props) {
   };
 
   const getWorkerTime = () => {
+    // const worker = new Worker();
     var worker = new Worker(new URL("./worker.js", import.meta.url));
     worker.postMessage(Date.now());
     worker.onmessage = function (event) {
       console.log(event.data);
+      worker.terminate();
     };
-    worker.terminate();
   };
   return (
     <div>

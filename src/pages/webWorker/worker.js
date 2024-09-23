@@ -1,4 +1,5 @@
 onmessage = function (event) {
+  console.log(event);
   const startTime = event.data;
   const generateData = () => {
     const data = [];
