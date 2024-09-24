@@ -1,19 +1,18 @@
-onmessage = function (event) {
-  console.log(event);
-  const startTime = event.data;
-  const generateData = () => {
-    const data = [];
-    for (let i = 0; i < 10000000; i++) {
-      const item = {
-        id: i,
-        value: Math.random() * 100,
-      };
-      data.push(item);
+// worker.js
+onmessage = function (e) {
+  console.log(e);
+  const { num1, num2 } = e.data;
+  let result = 0;
+
+  if (num1) {
+    for (let i = 0; i <= num1; i++) {
+      result += i; // 简单的加法计算
     }
-    return data;
-  };
-  generateData();
-  const endTime = Date.now();
-  var result = endTime - startTime;
+  } else {
+    for (let i = 0; i <= num2; i++) {
+      result += i; // 简单的加法计算
+    }
+  }
+
   postMessage(result);
 };
