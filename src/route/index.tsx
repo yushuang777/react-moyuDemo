@@ -15,7 +15,8 @@ import NotFind from "../pages/notFind/index.tsx";
 import Flow from "../pages/flow/index.tsx";
 import WebWorkerBlob from "../pages/webWorkerBlob/index.tsx";
 import AutoScroll from "../pages/autoScroll/index.tsx";
-
+import ShareWorker from "../pages/shareWorker/index.tsx";
+import TestPage from "../pages/testpage/index.tsx";
 export interface CustomRouteObject extends NonIndexRouteObject {
   path: string;
   element?: React.ReactNode | null;
@@ -78,6 +79,14 @@ export const routeList: CustomRouteObject[] = [
   {
     path: "/autoScroll",
     element: <AutoScroll />,
+  },
+  {
+    path: "/shareWorker",
+    element: <ShareWorker />,
+  },
+  {
+    path: "/testPage",
+    element: <TestPage />,
   },
   {
     path: "*",
