@@ -18,6 +18,7 @@ import AutoScroll from "../pages/autoScroll/index.tsx";
 import ShareWorker from "../pages/shareWorker/index.tsx";
 import TestPage from "../pages/testpage/index.tsx";
 import Test from "../pages/ystest/index.tsx";
+import Zustand from "../pages/zustand/index.tsx";
 export interface CustomRouteObject extends NonIndexRouteObject {
   path: string;
   element?: React.ReactNode | null;
@@ -92,6 +93,10 @@ export const routeList: CustomRouteObject[] = [
   {
     path: "/testPage",
     element: <TestPage />,
+  },
+  {
+    path: "/zustand",
+    element: <Zustand />,
   },
   {
     path: "*",
