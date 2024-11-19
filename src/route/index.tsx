@@ -17,6 +17,7 @@ import WebWorkerBlob from "../pages/webWorkerBlob/index.tsx";
 import AutoScroll from "../pages/autoScroll/index.tsx";
 import ShareWorker from "../pages/shareWorker/index.tsx";
 import TestPage from "../pages/testpage/index.tsx";
+import Test from "../pages/ystest/index.tsx";
 export interface CustomRouteObject extends NonIndexRouteObject {
   path: string;
   element?: React.ReactNode | null;
@@ -31,6 +32,10 @@ export const routeList: CustomRouteObject[] = [
         element: <Info />,
       },
     ],
+  },
+  {
+    path: "/test",
+    element: <Test />,
   },
   {
     path: "/darkTheme",

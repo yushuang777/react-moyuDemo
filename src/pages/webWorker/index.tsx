@@ -68,10 +68,10 @@ function WebWorker() {
         使用webWorker线程
       </Button>
       {result1 !== null && <h2>结果: {result1}</h2>}
-      {/* {threadTime !== null && <p>主线程耗时: {threadTime.toFixed(2)} ms</p>}
+      {threadTime !== null && <p>主线程耗时: {threadTime.toFixed(2)} ms</p>}
       {workerTime !== null && (
         <p>webWorker线程耗时: {workerTime.toFixed(2)} ms</p>
-      )} */}
+      )}
 
       <Input
         style={{ width: "300px" }}
