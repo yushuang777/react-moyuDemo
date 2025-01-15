@@ -1,80 +1,37 @@
-import { Button, Form, Input, Select } from "antd";
-import React from "react";
-
-const { Option } = Select;
-
-const layout = {
-  labelCol: { span: 8 },
-  wrapperCol: { span: 16 },
-};
-const tailLayout = {
-  wrapperCol: { offset: 8, span: 16 },
-};
+import { Button, Form, Input, Select } from 'antd';
+import React from 'react';
 function YsTest(props) {
-  const [form] = Form.useForm();
-  const onGenderChange = (value: string) => {
-    switch (value) {
-      case "male":
-        form.setFieldsValue({ note: "Hi, man!" });
-        return;
-      case "female":
-        form.setFieldsValue({ note: "Hi, lady!" });
-        return;
-      case "other":
-        form.setFieldsValue({ note: "Hi there!" });
-    }
+  function memoize(fn) {
+    const cache = {};
+    return function (...args) {
+      const key = args.join(',');
+      if (cache[key]) {
+        console.log('Returning from cache:', key);
+        return cache[key];
+      }
+      const result = fn(...args);
+      cache[key] = result;
+      return result;
+    };
+  }
+
+  // 示例：计算斐波那契数列
+  function fib(n) {
+    if (n <= 1) return n;
+    return fib(n - 1) + fib(n - 2);
+  }
+
+  const count = () => {
+    const memoizedFib = memoize(fib);
+
+    console.log(memoizedFib(40)); // 计算并缓存结果
+    console.log(memoizedFib(40)); // 从缓存中获取结果
   };
 
-  const onFinish = (values: any) => {
-    console.log(values);
-  };
-
-  const onReset = () => {
-    form.resetFields();
-  };
-
-  const onFill = () => {
-    form.setFieldsValue({
-      note: "Hello world!",
-      gender: "male",
-    });
-  };
   return (
     <>
-      <Form {...layout} form={form} name="control-hooks" onFinish={onFinish}>
-        <Form.Item
-          noStyle
-          shouldUpdate={(prevValues, currentValues) =>
-            prevValues.gender !== currentValues.gender
-          }
-        >
-          {({ getFieldValue }) =>
-            getFieldValue("gender") === "other" ? (
-              <Form.Item
-                name="customizeGender"
-                label="Customize Gender"
-                rules={[{ required: true }]}
-              >
-                <Input />
-              </Form.Item>
-            ) : null
-          }
-        </Form.Item>
-        <Form.Item {...tailLayout}>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-          <Button htmlType="button" onClick={onReset}>
-            Reset
-          </Button>
-          <Button type="link" htmlType="button" onClick={onFill}>
-            Fill form
-          </Button>
-        </Form.Item>
-      </Form>
-      <Form.Item name="note" label="Note" rules={[{ required: true }]}>
-        <Input />
-      </Form.Item>
+      {' '}
+      <Button onClick={() => count()}>计算</Button>
     </>
   );
 }
